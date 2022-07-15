@@ -56,12 +56,13 @@ function Tweet({tweet} : Props) {
       <div className='mt flex justify-between'>
         <div className='flex cursor-pointer items-center space-x-3 text-gray-400'>
             <ChatAlt2Icon className='h-5 w-5'/>
-            <p> 5</p>
+            <p> {comments.length}</p>
 
          </div>
 
         <div className='flex cursor-pointer items-center space-x-3 text-gray-400'>
-            <HeartIcon className='h-5 w-5'/>
+            <HeartIcon className='h-5 w-5 '/>
+            <p>100</p>
         </div>
 
         <div className='flex cursor-pointer items-center space-x-3 text-gray-400'>
@@ -72,7 +73,7 @@ function Tweet({tweet} : Props) {
         <UploadIcon className='h-5 w-5'/>
         </div>
       </div>
-      {comments?.length>0 && (
+      {comments?.length > 0 && (
         <div className='my-2 mt-5 max-h-44 space-y-5 overflow-y-scroll border-t
         border-gray-100 p-5'>
             {comments.map ((comment) =>( 
@@ -83,18 +84,15 @@ function Tweet({tweet} : Props) {
                 alt =""/>
                 <div>
                     <div className='flex items-center space-x-1'> 
-                        <p className='mr-1 font-bold'> {comment.username}</p>
-                    
-                     <p className='hidden text-sm text-gray-500 lg:inline'
-                     > @{comment.username.replace(/\s+/g,'').toLowerCase}.
-                     </p>
-                     </div>
+                        <p className='mr-1 font-bold'> {comment.username}</p>   
+                        <p className='hidden text-sm text-gray-500 lg:inline'>
+                           
+                          </p>                  
+                    </div>
                      <Timeago
                      className='text-sm text-gray-500'
                      date={comment._CreateAt}/>
-
-
-                 </div>
+                </div>
                  <p>{comment.comment}</p>
 
                 </div>

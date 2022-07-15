@@ -21,3 +21,15 @@ pnpm create next-app --example with-tailwindcss with-tailwindcss-app
 ```
 
 Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+
+
+
+
+HOW TO RUN THE APPLICATION :
+ # 1 :first open the application folder.
+ # 2 :open the folder in ur vs code.
+ # 3: search if there is node_module present or  (if not then open terminal and run as 'npm install then u will find node_module).  
+ # 4: run the cmd 'npm run dev'
+ # 5: open second terminal and then use the cmd (cd sanity ) then u reach the sanity dir..
+ # 6: in sanity directly use the cmd ( ' sanity start ')
+ # 7 : open your browser and use the localhost as provided by the both terminal.

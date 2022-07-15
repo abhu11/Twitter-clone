@@ -5,7 +5,7 @@ import { sanityClient } from '../../sanity'
 import {Comment} from '../../typings'
 
 const commentQuery= groq`
-*[_type == "comment" ] && references (*[_type=='tweet' &&  _id == $tweetId]._id) {
+*[_type == "comment" ]{
     _id,
     ...
 } |order(_createdAt desc)
