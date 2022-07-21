@@ -16,6 +16,7 @@ export type TweetBody = {
 }
 
 export type CommentBody= {
+    tweetId: any
     comment: string
      tweet: string
      username: string

@@ -35,11 +35,10 @@ function Sidebar() {
            alt=''
             className=' h-10 w-10 rounded-full xl:mr-2.5'/>
           <div className=' leading-5 
-            cursor-pointer 
-            text-twitter transition-all duration-500 ease-out 
+            cursor-pointer  text-twitter transition-all duration-500 ease-out 
             active:scale-125'> 
         <a href='https://twitter.com/home '/>
-                     <p className='font-bold'> Abhishek Vishvakarma</p>
+                     <p className='font-bold group-hover:text-twitter'> Abhishek Vishvakarma</p>
                <a href='https://twitter.com/home' 
                        className='text-[#6e767d]'> @abhishek11 </a>
           </div>

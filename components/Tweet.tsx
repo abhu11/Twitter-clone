@@ -10,6 +10,7 @@ import {
     UploadIcon,
 } from '@heroicons/react/outline'
 import { fetchComments } from '../utils/fetchComments'
+import { useSession } from 'next-auth/react'
 
 interface Props {
     tweet: Tweet 
@@ -18,6 +19,9 @@ interface Props {
 
 function Tweet({tweet} : Props) {
      const [comments, setComments] = useState<Comment[]>([])
+     const [commentBoxVisible, setCommentBoxVisible] = useState<boolean>(false)
+     const [Input, setInput] = useState<string>('')
+     const { data : session } = useSession()
 
     const refreshComments = async () => {
         const comments: Comment[]= await fetchComments(tweet._id)
@@ -27,6 +31,8 @@ function Tweet({tweet} : Props) {
         refreshComments()
     },[])
     console.log(comments)
+    const handleSubmit= (e:React.FormEvent<HTMLFormElement>) =>
+    e.preventDefault()
 
 
 
@@ -53,9 +59,11 @@ function Tweet({tweet} : Props) {
 
       </div>
       </div>
-      <div className='mt flex justify-between'>
-        <div className='flex cursor-pointer items-center space-x-3 text-gray-400'>
-            <ChatAlt2Icon className='h-5 w-5'/>
+      <div className='mt-5 flex justify-between'>
+        <div 
+          onClick={() => session && setCommentBoxVisible (!commentBoxVisible)}
+        className='flex cursor-pointer items-center space-x-3 text-gray-400 '>
+            <ChatAlt2Icon className='h-5 w-5' />
             <p> {comments.length}</p>
 
          </div>
@@ -73,6 +81,22 @@ function Tweet({tweet} : Props) {
         <UploadIcon className='h-5 w-5'/>
         </div>
       </div>
+
+        {/*Comment Box logic*/}
+
+        {commentBoxVisible && (
+          <form onSubmit={handleSubmit} className='mt-3 flex space-x-3'>
+            <input 
+            value = {Input}
+            onChange= { e =>setInput(e.target.value)}
+            className='flex-1 rounded-lg bg-gray-100 p-2 outline-none'
+            type='text' placeholder='Write a comment...'/>
+            <button className='text-twitter disabled:text-gray-200'> POST </button>
+          </form>
+        )}
+
+
+
       {comments?.length > 0 && (
         <div className='my-2 mt-5 max-h-44 space-y-5 overflow-y-scroll border-t
         border-gray-100 p-5'>
